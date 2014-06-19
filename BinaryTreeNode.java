@@ -1,4 +1,5 @@
-public class BinaryTreeNode<T> implements Comparable<T> {
+
+public class BinaryTreeNode<T extends Comparable<T>> implements Comparable<T> {
 	
 	private T value;
 	private BinaryTreeNode<T> left;
@@ -8,6 +9,10 @@ public class BinaryTreeNode<T> implements Comparable<T> {
 		this.value=val;
 	}
 	
+	public T getValue() {
+		return value;
+	}
+
 	public BinaryTreeNode<T> getLeft() {
 		return left;
 	}
@@ -24,10 +29,8 @@ public class BinaryTreeNode<T> implements Comparable<T> {
 		this.right = right;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public int compareTo(T val) {
-		return ((Comparable<T>) this.value).compareTo(val);
+		return this.value.compareTo(val);
 	}
-
 }
